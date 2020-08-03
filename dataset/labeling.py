@@ -2,14 +2,10 @@ import cv2
 import os
 import shutil
 
-rawPath="./raw"
-leftPath="./labeled/left"
-rightPath="./labeled/right"
-
-
-
-img = cv2.imread("raw/1.jpeg")
-print(img)
+rawPath="./dataset/raw"
+rightPath="./dataset/labeled/right"
+leftPath="./dataset/labeled/left"
+frontPath="./dataset/labeled/front"
 
 for img in os.listdir(rawPath):
     read = cv2.imread(os.path.join(rawPath, img))
@@ -20,6 +16,7 @@ for img in os.listdir(rawPath):
         shutil.move(os.path.join(rawPath, img), rightPath)
     elif c==81: # move to folder left in labeled
         shutil.move(os.path.join(rawPath, img), leftPath)
+    elif c==72: # move to folder front in labeled
+        shutil.move(os.path.join(rawPath, img), frontPath)
     else: # avoid labeling errors for wrong key press
         break
-    
