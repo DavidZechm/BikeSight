@@ -8,9 +8,11 @@ leftPath="./dataset/labeled/left"
 frontPath="./dataset/labeled/front"
 nonePath="./dataset/labeled/none"
 
+i=0
 for img in os.listdir(rawPath):
     read = cv2.imread(os.path.join(rawPath, img))
     cv2.imshow("raw img", read)
+    i+=1;   print(str(i))
     c=cv2.waitKey(0)
 
     if c==83: # move to folder right in labeled
