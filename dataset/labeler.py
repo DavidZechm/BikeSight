@@ -1,19 +1,37 @@
-import cv2
-import os
+import cv2, os
+import numpy as np
 
-curFolder="./dataset/labeled/front"
-xml="./dataset/labeled/xml"
+rightPath="/media/davidzechm/LaCie/dataset/labeled/right"
+leftPath="/media/davidzechm/LaCie/dataset/labeled/left"
 
-for img in os.listdir(curFolder):
-    read = cv2.imread(os.path.join(curFolder, img))
+xmin=0
+ymin=0
+def boundingBox(event,x,y,flags,param):
+    global xmin,ymin
+    if event == cv2.EVENT_LBUTTONDOWN:
+        xmin=x
+        ymin=y
+        cv2.circle(img, (xmin,ymin), 5, (255,0,255))
+    if event==cv2.EVENT_LBUTTONUP:
+        cv2.rectangle(img, (xmin,ymin), (x,y), (255,0,0), 3)
 
-    if cv2.EVENT_LBUTTONDOWN:
-        print("XXX")
+        f= open(str(imageName)+".txt","w+")
+        f.write(str(each)+","+str(xmin)+","+str(ymin)
+            +","+str(x)+","+str(y))
+        f.write("\nlbl_name,xmin,ymin,xmax,ymax")
+        f.close()
 
-    sp=(0,0)
-    ep=(100,100)
-    color = (0, 255, 0)
+for each in os.listdir(leftPath):
+    cur=each.split(".")
+    imageName=cur[0]
 
-    draw = cv2.rectangle(read, sp, ep, color, 2)
-    cv2.imshow("raw", draw)
-    c=cv2.waitKey(0)
+    img=cv2.imread(os.path.join(leftPath, each))
+    cv2.namedWindow('image')
+    cv2.setMouseCallback('image',boundingBox)
+
+    while(1):
+        cv2.imshow('image',img)
+        k = cv2.waitKey(20)
+        if k == 13:
+            break
+    cv2.destroyWindow("image")

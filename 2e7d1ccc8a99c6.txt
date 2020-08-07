@@ -1,0 +1,2 @@
+2e7d1ccc8a99c6.jpg,152,142,762,508
+lbl_name,xmin,ymin,xmax,ymax

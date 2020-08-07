@@ -2,7 +2,7 @@ import cv2
 import os
 import shutil
 
-rawPath="/media/davidzechm/LaCie/dataset/sorted/raw"
+rawPath="/media/davidzechm/LaCie/dataset/sorted/raw_indicators"
 rightPath="/media/davidzechm/LaCie/dataset/sorted/right"
 leftPath="/media/davidzechm/LaCie/dataset/sorted/left"
 frontPath="/media/davidzechm/LaCie/dataset/sorted/front"
@@ -12,9 +12,9 @@ i=0
 for img in os.listdir(rawPath):
     read = cv2.imread(os.path.join(rawPath, img))
     cv2.imshow("raw img", read)
-    i+=1;   print(str(i) + " : " + img)
     c=cv2.waitKey(0)
-
+    i+=1;   print(str(i) + " : " + img)
+    
     if c==83: # move to folder right in labeled
         shutil.move(os.path.join(rawPath, img), rightPath)
     elif c==81: # move to folder left in labeled
