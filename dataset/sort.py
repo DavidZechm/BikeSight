@@ -2,11 +2,11 @@ import cv2
 import os
 import shutil
 
-rawPath="./dataset/raw"
-rightPath="./dataset/labeled/right"
-leftPath="./dataset/labeled/left"
-frontPath="./dataset/labeled/front"
-nonePath="./dataset/labeled/none"
+rawPath="/media/davidzechm/LaCie/dataset/sorted/raw"
+rightPath="/media/davidzechm/LaCie/dataset/sorted/right"
+leftPath="/media/davidzechm/LaCie/dataset/sorted/left"
+frontPath="/media/davidzechm/LaCie/dataset/sorted/front"
+nonePath="/media/davidzechm/LaCie/dataset/sorted/none"
 
 i=0
 for img in os.listdir(rawPath):
