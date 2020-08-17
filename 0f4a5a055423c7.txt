@@ -1,2 +1,0 @@
-0f4a5a055423c7.jpg,287,113,848,556
-lbl_name,xmin,ymin,xmax,ymax
