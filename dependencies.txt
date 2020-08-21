@@ -3,3 +3,8 @@ sudo apt upgrade
 
 sudo apt install vim
 sudo apt install git
+
+sudo apt-get install build-essential
+git clone https://github.com/tensorflow/tensorflow.git tensorflow_src
+cd tensorflow_src && ./tensorflow/lite/tools/make/download_dependencies.sh
+./tensorflow/lite/tools/make/build_rpi_lib.sh <-- didn't work
